@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        #measurementForm {
+            display: none;
+            margin-top: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #measurementBox {
+            display: none;
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="startButton" onclick="showForm()">Start</button>
+
+    <div id="measurementForm">
+        <form onsubmit="submitForm(); return false;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br>
+
+            <button type="submit">Enter</button>
+        </form>
+    </div>
+
+    <div id="measurementBox">
+        <h2>reset</h2>
+        <label for="temperature">Temperature:</label>
+        <input type="text" id="temperature" readonly><br>
+
+        <label for="moisture">Moisture:</label>
+        <input type="text" id="moisture" readonly><br>
+    </div>
+
+    <button id="finalEnterButton" style="display:none;" onclick="finalEnter()">Final Enter</button>
+
+    <script>
+        function showForm() {
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('measurementForm').style.display = 'block';
+        }
+
+        function submitForm() {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Perform any necessary processing with the entered data
+
+            // Display measurement box
+            document.getElementById('measurementBox').style.display = 'block';
+            document.getElementById('temperature').value = ''; // Set the temperature value
+            document.getElementById('moisture').value = ''; // Set the moisture value
+
+            // Display final enter button
+            document.getElementById('finalEnterButton').style.display = 'block';
+        }
+
+        function finalEnter() {
+            // Handle final enter button click if needed
+            alert("Final Enter clicked!");
+        }
+    </script>
+
+</body>
+</html>
